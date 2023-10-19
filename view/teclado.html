@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teclado Virtual</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .contenedor {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .keyboard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .keyboard .fila1,
+        .keyboard .fila2,
+        .keyboard .fila3,
+        .keyboard .fila4 {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            width: 100%;
+            gap: 5px;
+        }
+
+        .keyboard .fila1 .tab {
+            width: 55px;
+            font-size: 16px;
+        }
+
+        .keyboard .fila2 .bloq-meyus {
+            width: 65px;
+            font-size: 16px;
+        }
+
+        .keyboard .fila3 .mayus {
+            width: 50px;
+            font-size: 16px;
+        }
+
+        .keyboard .fila4 .f1 {
+            width: 53px;
+            font-size: 16px;
+        }
+
+        .keyboard .fila4 .espacio {
+            width: 320px;
+            font-size: 16px;
+        }
+
+        .key-container {
+            position: relative;
+        }
+
+        .key {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 5px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .key:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.02);
+        }
+
+        .output {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .disables {
+            opacity: 0.5;
+        }
+
+        #pressedKeys {
+            padding: 20px;
+            min-width: 600px;
+            height: 50px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            /* Alineamos las letras en el centro verticalmente */
+        }
+
+        .line {
+            border-bottom: 2px solid #000;
+            width: 45px;
+            margin: 0 5px;
+        }
+
+        .x3 {
+            width: 150px;
+            height: 150px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .x4 {
+            width: 200px;
+            height: 200px;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+
+        .x5 {
+            width: 250px;
+            height: 250px;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+        }
+
+        .x6 {
+            width: 300px;
+            height: 300px;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto;
+        }
+    </style>
+</head>
+
+<body>
+     <div class="contenedor" id="contenedor1">
+        <div id="pressedKeys">
+
+        </div>
+        <div id="resultado">Palabras correctas: 0 - Palabras incorrectas: 0</div>
+        <div class="keyboard">
+            <div class="fila1">
+                <button class="key tab disables" data-key="">Tab</button>
+                <button class="key" data-key="Q">Q</button>
+                <button class="key" data-key="W">W</button>
+                <button class="key" data-key="E">E</button>
+                <button class="key" data-key="R">R</button>
+                <button class="key" data-key="T">T</button>
+                <button class="key" data-key="Y">Y</button>
+                <button class="key" data-key="U">U</button>
+                <button class="key" data-key="I">I</button>
+                <button class="key" data-key="O">O</button>
+                <button class="key" data-key="P">P</button>
+            </div>
+
+            <div class="fila2">
+                <button class="key bloq-meyus disables" data-key="">Bloq Mayús</button>
+                <button class="key" data-key="A">A</button>
+                <button class="key" data-key="S">S</button>
+                <button class="key" data-key="D">D</button>
+                <button class="key" data-key="F">F</button>
+                <button class="key" data-key="G">G</button>
+                <button class="key" data-key="H">H</button>
+                <button class="key" data-key="J">J</button>
+                <button class="key" data-key="K">K</button>
+                <button class="key" data-key="L">L</button>
+                <button class="key" data-key="Ñ">Ñ</button>
+            </div>
+
+            <div class="fila3">
+                <button class="key mayus disables" data-key="">Mayús</button>
+                <button class="key disables" data-key="">
+                    <>
+                </button>
+                <button class="key" data-key="Z">Z</button>
+                <button class="key" data-key="X">X</button>
+                <button class="key" data-key="C">C</button>
+                <button class="key" data-key="V">V</button>
+                <button class="key" data-key="B">B</button>
+                <button class="key" data-key="N">N</button>
+                <button class="key" data-key="M">M</button>
+                <button class="key disables" data-key="">,</button>
+                <button class="key disables" data-key="">.</button>
+                <button class="key disables" data-key="">-</button>
+            </div>
+
+            <div class="fila4">
+                <button class="key f1 disables" data-key="">Ctrl</button>
+                <button class="key f1 disables" data-key="">Win</button>
+                <button class="key f1 disables" data-key="">alt</button>
+                <button class="key espacio" data-key=" "></button> </button>
+                <button class="key f1 disables" data-key="">AltGr</button>
+                <button class="key f1 disables" data-key="">Fn</button>
+            </div>
+        </div>
+        <button id="hablar">Hablar</button>
+    </div>
+
+    <div class="contenedor" id="contenedor2">
+
+    </div>
+
+    <script>
+        const palabras = ['MANZANA', 'ARROZ', 'CORRER', 'CAMINAR'];
+        const letras = [
+            {
+                'principal': 'a',
+                'secundaria': 'e',
+                'numVeces': 9,
+                'class': 'x3'
+            },
+            {
+                'principal': 'E',
+                'secundaria': 'F',
+                'numVeces': 16,
+                'class': 'x4'
+            },
+            {
+                'principal': 'a',
+                'secundaria': 'e',
+                'numVeces': 25,
+                'class': 'x5'
+            },
+            {
+                'principal': 'E',
+                'secundaria': 'F',
+                'numVeces': 36,
+                'class': 'x6'
+            },
+        ];
+        const pressedKeysElement = document.getElementById('pressedKeys');
+        const resultadoElement = document.getElementById('resultado');
+        let lines = []; // Almacenar las líneas para las palabras
+        let palabraIndex = 0;
+        let currentLineIndex = 0; // Índice de la línea actual
+        let palabrasCorrectas = 0; // Contador de palabras correctas
+        let palabrasIncorrectas = 0; // Contador de palabras incorrectas
+        let palabraActual = palabras[palabraIndex];
+
+        const hablarBoton = document.getElementById('hablar');
+        hablarBoton.addEventListener('click', () => {
+            const mensaje = resultadoElement.textContent;
+            hablar(mensaje);
+        });
+
+        // Función para hablar un mensaje utilizando la síntesis de voz
+           function hablar(mensaje) {
+               const synth = window.speechSynthesis;
+               const voz = new SpeechSynthesisUtterance(mensaje);
+               voz.rate = 0.7;
+               synth.speak(voz);
+           }
+   
+        // Función para generar las líneas de una palabra
+            function generarLineas(palabra) {
+                const wordLines = palabra.length;
+                for (let i = 0; i < wordLines; i++) {
+                    const line = document.createElement('div');
+                    line.classList.add('line');
+                    lines.push(line);
+                    pressedKeysElement.appendChild(line);
+                }
+                hablar(`Escribe la palabra ${palabra}.`);
+            }
+    
+        // Función para avanzar a la siguiente palabra
+          function avanzarPalabra() {
+              palabraIndex++;
+              if (palabraIndex < palabras.length) {
+                  palabraActual = palabras[palabraIndex];
+                  lines = [];
+                  generarLineas(palabraActual);
+                  currentLineIndex = 0;
+              } else {
+                  resultadoElement.textContent = `Todas las palabras se completaron. Palabras correctas: ${palabrasCorrectas} - Palabras incorrectas: ${palabrasIncorrectas}`;
+              }
+          }
+  
+          generarLineas(palabraActual);
+  
+        const keys = document.querySelectorAll('.key');
+
+         keys.forEach(key => {
+             key.addEventListener('click', () => {
+                 const keyValue = key.dataset.key;
+                 if (keyValue != '') {
+                     if (currentLineIndex < lines.length) {
+                         const line = lines[currentLineIndex];
+                         line.textContent = keyValue;
+                         currentLineIndex++;
+                         if (currentLineIndex === lines.length) {
+                             const typedWord = lines.map(line => line.textContent).join('');
+                             if (typedWord.toUpperCase() === palabraActual) {
+                                 palabrasCorrectas++;
+                             } else {
+                                 palabrasIncorrectas++;
+                             }
+ 
+                             pressedKeysElement.innerHTML = '';
+                             avanzarPalabra();
+                             resultadoElement.textContent = `Palabras correctas: ${palabrasCorrectas} - Palabras incorrectas: ${palabrasIncorrectas}.`;
+                         }
+                     }
+ 
+                     if (palabraIndex >= palabras.length) {
+                         document.getElementById('contenedor1').style.display = 'none';
+                         document.getElementById('contenedor2').style.display = 'block';
+                     }
+                 }
+             });
+         });
+ 
+
+
+
+        const contenedor2 = document.getElementById('contenedor2');
+        function crearBotones(obj) {
+            console.log(obj)
+            //contenedor2.innerHTML = '';
+            const div = document.createElement('div');
+            div.classList.add(obj.class);
+
+            const numeroAleatorio = Math.floor(Math.random() * ((obj.numVeces-1) - 0 + 1)) + 0;
+            console.log(numeroAleatorio)
+            for (let i = 0; i < obj.numVeces; i++) {
+                const Button = document.createElement('button');
+                Button.classList.add('key');
+                if (numeroAleatorio == i) {
+                    Button.dataset.key = obj.principal;
+                    Button.textContent = obj.principal;
+                } else {
+                    Button.dataset.key = obj.secundaria;
+                    Button.textContent = obj.secundaria;
+                }
+
+                div.appendChild(Button);
+            }
+
+            return div;
+        }
+
+        // Agregar elementos según el arreglo letras
+        letras.forEach(letra => {
+            const div = crearBotones(letra);
+            contenedor2.appendChild(div);
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
