@@ -1,11 +1,11 @@
-window.createGroup.addEventListener('submit', e => {
+window.group.addEventListener('submit', e => {
     e.preventDefault();
     register();
 });
 
 async function register() {
 
-    let form_data = $("#createGroup")[0];
+    let form_data = $("#group")[0];
     let data = new FormData(form_data);
     data.append('controller', 'group');
     data.append('action', 'createGroup');

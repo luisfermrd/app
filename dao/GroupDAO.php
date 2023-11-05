@@ -21,6 +21,11 @@ class GroupDAO
         $groupModel = new GroupModel($this->db);
         return $groupModel->readGroups($userID);
     }
+    public function readGroupById($groupID, $userID)
+    {
+        $groupModel = new GroupModel($this->db);
+        return $groupModel->readGroupById($groupID, $userID);
+    }
 
     public function updateGroup($groupID, $name, $description, $userID)
     {

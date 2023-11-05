@@ -36,6 +36,20 @@ class GroupController
         return ['status' => 'success', 'data' => $groups];
     }
 
+    public function readGroupById()
+    {
+        $groupID = $_POST['groupID'];
+
+        $result = $this->groupDAO->readGroupById($groupID, $this->userID);
+
+        if ($result) {
+            return ['status' => 'success', 'data' => $result[0]];
+        }else{
+            return ['status' => 'error', 'message' => 'Grupo no encontrado'];
+        }
+
+    }
+
     public function updateGroup()
     {
         // Validar datos recibidos por $_POST

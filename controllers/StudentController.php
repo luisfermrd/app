@@ -16,7 +16,17 @@ class StudentController
     {
         // Validar datos recibidos por $_POST
         $userName = $_POST['userName'];
+        if ($this->studentDAO->readStudentByUserName($userName)) {
+            return ['status' => 'error', 'message' => 'Ya existe un estudiante con este nombre de usuario, por favor intente con otro!'];
+        }
+        
         $birthDate = $_POST['birthDate'];
+        $birthdate = new DateTime($birthDate);
+        $currentDate = new DateTime();
+        $age = $birthdate->diff($currentDate)->y;
+        if ($age < 10) {
+            return ['status' => 'error', 'message' => 'El estudiante debe tener como minimo 10 años, verifique la fecha de nacimiento'];
+        } 
         $gender = $_POST['gender'];
         $password = $_POST['password'];
         $groupID = $_POST['groupID'] == '' ? NULL : $_POST['groupID'];
@@ -33,9 +43,22 @@ class StudentController
     public function readStudents()
     {
 
-        $students = $this->studentDAO->readStudents();
+        $students = $this->studentDAO->readStudents($this->userID);
 
         return ['status' => 'success', 'data' => $students];
+    }
+    public function readStudentById()
+    {
+
+        $studentID = $_POST['studentID'];
+
+        $student = $this->studentDAO->readStudentById($studentID);
+
+        if ($student) {
+            return ['status' => 'success', 'data' => $student[0]];
+        } else {
+            return ['status' => 'error', 'message' => 'El id proporsionado nos e encuentra registrado'];
+        }
     }
 
     public function updateStudent()
@@ -46,7 +69,7 @@ class StudentController
         $birthDate = $_POST['birthDate'];
         $gender = $_POST['gender'];
         $password = $_POST['password'];
-        $groupID = $_POST['groupID'];
+        $groupID = $_POST['groupID'] == '' ? NULL : $_POST['groupID'];
 
 
         $result = $this->studentDAO->updateStudent($studentID, $userName, $birthDate, $gender, $password, $this->userID, $groupID);

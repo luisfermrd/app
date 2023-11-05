@@ -45,3 +45,24 @@ CREATE TABLE User_Students (
 
 
 
+
+
+
+
+
+--TRIGGERS
+DELIMITER $$
+CREATE TRIGGER Before_Delete_Group
+BEFORE DELETE ON User_Groups
+FOR EACH ROW
+BEGIN
+    -- Actualiza el GroupID de los estudiantes asociados a NULL
+    UPDATE User_Students
+    SET GroupID = NULL
+    WHERE GroupID = OLD.GroupID;
+END;
+$$
+DELIMITER ;
+
+
+

@@ -37,7 +37,7 @@ main article .panel {
     align-items: center;
     flex-wrap: wrap;
     padding: 20px;
-    background-color: var(--color-200);
+    background-color: var(--color-50);
     margin-top: 20px;
     border-radius: 5px;
     box-shadow: 0px 3px 5px var(--text-shadow);
@@ -82,8 +82,8 @@ main article .panel .opciones .agregar {
     text-decoration: none;
     text-align: center;
     padding: 6px;
-    width: 100px;
-    border-radius: 10px;
+    width: 200px;
+    border-radius: 5px;
     background-color: var(--green);
     border: none;
     color: var(--white);
@@ -142,15 +142,29 @@ main article .contenedor-listas.height{
 main article .contenedor-listas .section-listar {
     min-width: 100%;
     min-height: 100vh;
+    margin-top: 20px;
+    padding-bottom: 50px;
+    background-color: var(--white);
+    transform: translateX(0);
+    transition: all 1s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+main article .contenedor-listas .section-listar h2{
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+main article .contenedor-listas .section-listar .group{
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
-    margin-top: 20px;
-    padding-bottom: 50px;
-    background-color: var(--color-50);
-    transform: translateX(0);
-    transition: all 1s ease;
+    padding-bottom: 40px;
 }
 
 main article .contenedor-listas .section-listar.ocultar,
@@ -162,13 +176,13 @@ main article .contenedor-listas .section-listar2 {
     min-width: 100%;
     min-height: 100vh;
     margin-top: 20px;
-    background-color: var(--color-50);
+    background-color: var(--white);
     padding: 20px;
     transform: translateX(100%);
     transition: all 1s ease;
 }
 
-main article .contenedor-listas .section-listar .card {
+main article .contenedor-listas .section-listar .group .card {
     margin: 70px 10px 0px 10px;
     width: 350px;
     height: 200px;
@@ -182,11 +196,11 @@ main article .contenedor-listas .section-listar .card {
     transition: transform .4s ease-in-out;
 }
 
-main article .contenedor-listas .section-listar .card:hover {
+main article .contenedor-listas .section-listar .group .card:hover {
     transform: scale(1.1);
 }
 
-main article .contenedor-listas .section-listar .card .avatar {
+main article .contenedor-listas .section-listar .group .card .avatar {
     position: absolute;
     top: -25%;
     left: 50%;
@@ -199,12 +213,12 @@ main article .contenedor-listas .section-listar .card .avatar {
     overflow: hidden;
 }
 
-main article .contenedor-listas .section-listar .card .avatar img {
+main article .contenedor-listas .section-listar .group .card .avatar img {
     max-width: 100%;
     max-height: 100%;
 }
 
-main article .contenedor-listas .section-listar .card .editar {
+main article .contenedor-listas .section-listar .group .card .editar {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -213,23 +227,23 @@ main article .contenedor-listas .section-listar .card .editar {
     transition: transform .3s ease-in-out;
 }
 
-main article .contenedor-listas .section-listar .card .editar:hover {
+main article .contenedor-listas .section-listar .group .card .editar:hover {
     transform: scale(1.2);
 }
 
-main article .contenedor-listas .section-listar .card h2 {
+main article .contenedor-listas .section-listar .group .card h2 {
     font-weight: 600;
     font-size: 20px;
     letter-spacing: 1px;
     margin-top: 50px;
 }
 
-main article .contenedor-listas .section-listar .card p {
+main article .contenedor-listas .section-listar .group .card p {
     font-size: 13px;
     letter-spacing: 1px;
 }
 
-main article .contenedor-listas .section-listar .card .card-option {
+main article .contenedor-listas .section-listar .group .card .card-option {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -265,6 +279,7 @@ main article .contenedor-listas .section-listar .card .card-option {
     padding: 5px;
     border-radius: 10px;
     opacity: 0;
+    pointer-events: none;
 }
 
 .button:hover > span{
@@ -278,7 +293,7 @@ main article .contenedor-listas .section-listar .card .card-option {
     color: var(--white);
 }
 
-.accsiones-table{
+.acciones-table{
     display: flex;
     justify-content: center;
     align-items: center;

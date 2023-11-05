@@ -23,10 +23,40 @@ class StudentModel
         return $stmt->execute();
     }
 
-    public function readStudents()
+    public function readStudents($userID)
     {
-        $sql = "SELECT * FROM User_Students";
+        $sql = "SELECT
+                    UG.GroupName,
+                    US.StudentID,
+                    US.UserName,
+                    US.Gender,
+                    YEAR(CURDATE()) - YEAR(US.BirthDate) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(US.BirthDate, '%m%d')) AS Age
+                FROM User_Students US
+                LEFT JOIN User_Groups UG ON US.GroupID = UG.GroupID
+                WHERE US.UserID = :userID
+                ORDER BY UG.GroupName ASC, US.GroupID IS NULL, Age;";
         $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':userID', $userID);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function readStudentById($studentID)
+    {
+        $sql = "SELECT * FROM User_Students WHERE StudentID = :studentID";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam('studentID', $studentID);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function readStudentByUserName($userName)
+    {
+        $sql = "SELECT * FROM User_Students WHERE UserName = :userName";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam('userName', $userName);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -34,13 +64,21 @@ class StudentModel
 
     public function updateStudent($studentID, $userName, $birthDate, $gender, $password, $userID, $groupID)
     {
-        $sql = "UPDATE User_Students SET UserName = :userName, BirthDate = :birthDate, Gender = :gender, Password = :password, UserID = :userID, GroupID = :groupID WHERE StudentID = :studentID";
+        if ($password != '') {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE User_Students SET UserName = :userName, BirthDate = :birthDate, Gender = :gender, Password = :password, UserID = :userID, GroupID = :groupID WHERE StudentID = :studentID";
+        }else{
+            $sql = "UPDATE User_Students SET UserName = :userName, BirthDate = :birthDate, Gender = :gender, UserID = :userID, GroupID = :groupID WHERE StudentID = :studentID";
+        }
+
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':studentID', $studentID);
         $stmt->bindParam(':userName', $userName);
         $stmt->bindParam(':birthDate', $birthDate);
         $stmt->bindParam(':gender', $gender);
-        $stmt->bindParam(':password', $password);
+        if ($password != '') {
+            $stmt->bindParam(':password', $hashedPassword);
+        }
         $stmt->bindParam(':userID', $userID);
         $stmt->bindParam(':groupID', $groupID);
 

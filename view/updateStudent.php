@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION["user_id"])) {
     header("Location: index.php");
-} else {
+} else if (isset($_GET['id'])) {
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -24,14 +24,15 @@ if (!isset($_SESSION["user_id"])) {
         <?php include './template/header.php'; ?>
         <main>
             <article>
-                <h1>Añadir estudiante</h1>
+                <h1>Actualizar estudiante</h1>
                 <hr>
-                <p>Introduce los siguientes datos para crear un nuevo estudiante. Recuerda que por seguridad, es recomendable no usar el nombre real del estudiante. Por favor, asegúrate de la veracidad de los datos introducidos. Para que el estudiante pueda acceder directamente a nuestra plataforma, para realizar el test, indica una contraseña y podrá acceder con ella y su nombre de usuario.</p>
+                <p>Modifica los campos los necesarios y luego preciona el boton actualizar.</p>
             </article>
             <section>
-            <?php
-                    $action = 'Registrar';
-                    include_once './template/formStudent.php'
+                <input type="hidden" name="studentID" id="studentID" value="<?php echo $_GET['id'] ?>">
+                <?php
+                $action = 'Actualizar';
+                include_once './template/formStudent.php'
                 ?>
             </section>
         </main>
@@ -40,11 +41,13 @@ if (!isset($_SESSION["user_id"])) {
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="../lib/toastify-js/toastify.js"></script>
-    <script src="../public/js/newStudent.js"></script>
+    <script src="../public/js/updateStudent.js"></script>
     <script src="../public/js/menu.js"></script>
 
     </html>
 <?php
+} else {
+    header("Location: home.php");
 }
 ob_end_flush();
 ?>

@@ -28,6 +28,16 @@ class GroupModel
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function readGroupById($groupID, $userID)
+    {
+        $sql = "SELECT * FROM User_Groups WHERE UserID = :UserID AND GroupID = :GroupID";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':UserID', $userID);
+        $stmt->bindParam(':GroupID', $groupID);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function updateGroup($groupID, $name, $description, $userID)
     {

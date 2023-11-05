@@ -6,7 +6,11 @@ const colchonIcon = document.getElementById("colchon-icon");
 const logout = document.getElementById("logout");
 const nav = document.querySelector('nav');
 
-
+// Hacer la barra de navegación pegajosa al hacer scroll
+window.addEventListener('scroll', () => {
+    const header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+});
 
 // Evento para mostrar/ocultar el menú desplegable al hacer clic en "submenu"
 submenu.addEventListener('click', (event) => {

@@ -1,0 +1,108 @@
+@import url(root.css);
+@import url(header.css);
+@import url(footer.css);
+
+main {
+    margin-top: 80px;
+    padding: 40px;
+}
+
+main article h1 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+main article hr {
+    height: 5px;
+    background-color: var(--color-50);
+    border: none;
+    border-radius: 2px;
+}
+
+main article p {
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+main .container {
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin-top: 40px;
+    position: relative;
+}
+
+main .container .btn{
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    background-color: var(--green);
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--white);
+    border-radius: 5px;
+    width: 200px;
+
+}
+
+main .container a:hover{
+    background-color: var(--green-2);
+}
+main .container a:focus{
+    background-color: var(--green-3);
+}
+
+
+
+
+
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 6px;
+    width: 40px;
+    border: 1px solid var(--color-500);
+    color: var(--color-500);
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    position: relative;
+}
+
+.button span{
+    position: absolute;
+    top: -30px;
+    left: -60px;
+    width: 160px;
+    background: var(--gray);
+    color: var(--white);
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.button:hover > span{
+    opacity: 1;
+}
+
+
+
+.button:hover {
+    background-color: var(--color-500);
+    color: var(--white);
+}
+
+.acciones-table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

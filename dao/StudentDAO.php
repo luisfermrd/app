@@ -15,10 +15,22 @@ class StudentDAO
         return $studentModel->createStudent($userName, $birthDate, $gender, $password, $userID, $groupID);
     }
 
-    public function readStudents()
+    public function readStudents($userID)
     {
         $studentModel = new StudentModel($this->db);
-        return $studentModel->readStudents();
+        return $studentModel->readStudents($userID);
+    }
+
+    public function readStudentById($userID)
+    {
+        $studentModel = new StudentModel($this->db);
+        return $studentModel->readStudentById($userID);
+    
+    }
+    public function readStudentByUserName($userName)
+    {
+        $studentModel = new StudentModel($this->db);
+        return $studentModel->readStudentByUserName($userName);
     }
 
     public function updateStudent($studentID, $userName, $birthDate, $gender, $password, $userID, $groupID)

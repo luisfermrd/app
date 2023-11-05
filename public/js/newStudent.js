@@ -22,7 +22,7 @@ async function getGroups() {
 
 getGroups();
 
-window.createStudent.addEventListener('submit', e => {
+window.student.addEventListener('submit', e => {
     e.preventDefault();
     create();
 })
@@ -31,7 +31,7 @@ window.createStudent.addEventListener('submit', e => {
 async function create() {
 
     if (window.password.value == window.password2.value) {
-        let form_data = $("#createStudent")[0];
+        let form_data = $("#student")[0];
         let data = new FormData(form_data);
         data.append('controller', 'student');
         data.append('action', 'createStudent');
@@ -71,6 +71,13 @@ async function create() {
             }
         }).showToast();
     }
-
-
 }
+
+
+const campoUsuario = document.getElementById("userName");
+
+campoUsuario.addEventListener("input", function () {
+    let valor = campoUsuario.value;
+    valor = valor.replace(/\s/g, "");
+    campoUsuario.value = valor;
+});
