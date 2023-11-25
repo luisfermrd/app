@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "c:\\xampp\\htdocs\\app\\public\\index.html"
+    "livePreview.defaultPreviewPath": "c:\\xampp\\htdocs\\app\\public\\index.html",
+    "editor.inlineSuggest.showToolbar": "onHover"
 }

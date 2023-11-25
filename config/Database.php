@@ -9,7 +9,7 @@ class Database
     private $host = 'localhost';
     private $dbname = 'dislexiaApp';
     private $username = 'root';
-    private $password = '1234567890';
+    private $password = '';
 
     // Constructor privado para evitar instanciar directamente
     private function __construct()

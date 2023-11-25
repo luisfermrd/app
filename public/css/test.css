@@ -1,0 +1,362 @@
+@import url(root.css);
+
+.initial_section,
+.secondary_section,
+.tertiary_section,
+.test_section {
+  width: 100%;
+  background-color: var(--whithe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.test_section {
+  height: 100vh;
+  margin: 0;
+}
+
+.content {
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  background-color: var(--whithe);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px black;
+  margin: 20px;
+}
+
+.content .in-header {
+  width: 100%;
+}
+
+.content .in-header button {
+  border: 1px solid var(--color-500);
+  background-color: var(--whithe);
+  color: var(--color-500);
+  font-size: 22px;
+  font-weight: 900;
+  border-radius: 50%;
+  width: 40px;
+  transition: all 0.8s ease;
+}
+
+.content .in-header button:hover {
+  background-color: var(--color-600);
+  color: var(--white);
+}
+
+.text-center {
+  text-align: center;
+  color: rgb(92, 92, 92);
+  letter-spacing: 1.5px;
+  padding: 10px;
+}
+
+.content button {
+  width: 40%;
+  margin: 20px;
+  padding: 8px;
+  color: var(--white);
+  background-color: var(--color-500);
+  border-radius: 15px;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.8s ease;
+}
+
+.content .play {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  background-color: var(--white);
+  transition: all 0.8s ease;
+}
+
+.content .play:hover:not(:disabled) {
+  transform: scale(1.1);
+  background-color: var(--white);
+  box-shadow: none;
+}
+
+.content button:disabled {
+  opacity: 0.5; /* Puedes ajustar la opacidad según tus preferencias */
+  cursor: not-allowed; /* Cambia el cursor para indicar que el botón está desactivado */
+}
+
+.content button:hover:not(:disabled) {
+  background-color: var(--color-600);
+  color: var(--white);
+  box-shadow: 0 0 5px var(--color-600);
+}
+
+.content button:active:not(:disabled) {
+  background-color: var(--color-700);
+  color: var(--white);
+}
+
+h2 {
+  font-weight: 500;
+}
+span {
+  font-size: 14px;
+}
+.p {
+  padding: 10px 100px;
+}
+
+.column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". ."
+    ". ."
+    "end end";
+}
+
+.end {
+  grid-area: end;
+}
+
+.test_section article {
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test_section #loadAudio .contenedor {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.test_section #loadAudio .onda {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    transparent 20%,
+    rgba(0, 0, 0, 0.5) 50%,
+    transparent 80%
+  );
+  animation: onda-animacion 2s linear infinite;
+}
+
+@keyframes onda-animacion {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.test_section #loadAudio img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.test_section #nextTest div {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.test_section #nextTest div h2 {
+  font-size: 26px;
+  font-weight: 500;
+  color: rgb(75, 75, 75);
+  margin-bottom: 10px;
+}
+
+.test_section #nextTest div p {
+  font-size: 18px;
+  color: rgb(100, 100, 100);
+  margin-bottom: 10px;
+}
+
+.test_section #nextTest div button {
+  width: 80%;
+  margin: 20px;
+  padding: 8px;
+  color: var(--white);
+  background-color: var(--color-500);
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.8s ease;
+}
+
+.test_section #nextTest div button:hover{
+    background-color: var(--color-600);
+}
+
+/* Test y botones */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.keyboard .fila1,
+.keyboard .fila2,
+.keyboard .fila3,
+.keyboard .fila4 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+}
+
+.keyboard .fila1 .tab {
+  width: 55px;
+  font-size: 16px;
+}
+
+.keyboard .fila2 .bloq-meyus {
+  width: 65px;
+  font-size: 16px;
+}
+
+.keyboard .fila3 .mayus {
+  width: 50px;
+  font-size: 16px;
+}
+
+.keyboard .fila4 .f1 {
+  width: 53px;
+  font-size: 16px;
+}
+
+.keyboard .fila4 .espacio {
+  width: 320px;
+  font-size: 16px;
+}
+
+.key-container {
+  position: relative;
+}
+
+.key {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+/* .key:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.02);
+} */
+
+.output {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.disables {
+  opacity: 0.5;
+}
+
+#pressedKeys {
+  padding: 20px;
+  min-width: 600px;
+  height: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.line {
+  border-bottom: 2px solid #000;
+  width: 45px;
+  margin: 0 5px;
+}
+
+.x3 {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.x4 {
+  width: 250px;
+  height: 250px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.x5 {
+  width: 300px;
+  height: 300px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.x6 {
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+}

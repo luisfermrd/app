@@ -11,7 +11,7 @@
             text-align: center;
         }
 
-        .contenedor {
+        .container {
             width: 100%;
             min-height: 100vh;
             display: flex;
@@ -152,7 +152,7 @@
 </head>
 
 <body>
-     <div class="contenedor" id="contenedor1">
+     <div class="container" id="container1">
         <div id="pressedKeys">
 
         </div>
@@ -215,7 +215,7 @@
         <button id="hablar">Hablar</button>
     </div>
 
-    <div class="contenedor" id="contenedor2">
+    <div class="container" id="container2">
 
     </div>
 
@@ -258,8 +258,8 @@
 
         const hablarBoton = document.getElementById('hablar');
         hablarBoton.addEventListener('click', () => {
-            const mensaje = resultadoElement.textContent;
-            hablar(mensaje);
+            var audio = new Audio('../public/song/activa_el_volumen_de_tu_ordenador.mp3');
+            audio.play();
         });
 
         // Función para hablar un mensaje utilizando la síntesis de voz
@@ -322,8 +322,8 @@
                      }
  
                      if (palabraIndex >= palabras.length) {
-                         document.getElementById('contenedor1').style.display = 'none';
-                         document.getElementById('contenedor2').style.display = 'block';
+                         document.getElementById('container1').style.display = 'none';
+                         document.getElementById('container2').style.display = 'block';
                      }
                  }
              });
@@ -332,10 +332,10 @@
 
 
 
-        const contenedor2 = document.getElementById('contenedor2');
+        const container2 = document.getElementById('container2');
         function crearBotones(obj) {
             console.log(obj)
-            //contenedor2.innerHTML = '';
+            //container2.innerHTML = '';
             const div = document.createElement('div');
             div.classList.add(obj.class);
 
@@ -361,7 +361,7 @@
         // Agregar elementos según el arreglo letras
         letras.forEach(letra => {
             const div = crearBotones(letra);
-            contenedor2.appendChild(div);
+            container2.appendChild(div);
         });
 
 

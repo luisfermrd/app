@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="118px" height="118px" viewBox="0 0 118 118" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>play prueba sonido</title>
+    <defs>
+        <filter x="-29.5%" y="-21.8%" width="159.0%" height="159.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <circle id="path-2" cx="39" cy="39" r="39"></circle>
+        <filter x="-25.0%" y="-17.3%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="03_Test-Alumno-(dev-ready)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="test-de-audio" transform="translate(-124.000000, -425.000000)">
+            <g id="play-prueba-sonido" filter="url(#filter-1)" transform="translate(144.000000, 439.000000)">
+                <g id="shadow" fill="black" fill-opacity="1">
+                    <use filter="url(#filter-3)" xlink:href="#path-2"></use>
+                </g>
+                <circle id="background" fill="#4AC3FF" cx="39" cy="39" r="39"></circle>
+                <g id="Icon" transform="translate(30.500000, 26.500000)" fill="#FFFFFF">
+                    <path d="M3.47722656,24.5351563 L15.9023828,13.8878516 C16.3074642,13.5405418 16.540588,13.0335869 16.540588,12.5 C16.540588,11.9664131 16.3074642,11.4594582 15.9023828,11.1121484 L3.47722656,0.46484375 C2.29123047,-0.551289062 0.459296875,0.291171875 0.459296875,1.85269531 L0.459296875,23.1503516 C0.459296875,24.711875 2.29123047,25.5543359 3.47722656,24.5351563 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
