@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador</title>
+    <style>
+
+
+.progress-container {
+    float: inline-end;
+    position: relative;
+    margin: 10px;
+}
+
+.contador {
+    font-size: 1.5em;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    transition: stroke-dashoffset 1s linear;
+    transform-origin: 50% 50%;
+    stroke-dasharray: 150;
+    stroke-dashoffset: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <svg class="progress-ring" width="60" height="60">
+            <circle class="progress-ring-circle" cx="30" cy="30" r="24" fill="transparent" stroke="#3498db" stroke-width="6"></circle>
+        </svg>
+        <div id="temporizador" class="contador"></div>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    let segundos = 10;
+    const duracion = segundos;
+    const temporizadorElement = document.getElementById("temporizador");
+    const progressCircle = document.querySelector('.progress-ring-circle');
+    const dashoffset = progressCircle.getTotalLength();
+
+    function actualizarTemporizador() {
+        temporizadorElement.textContent = segundos;
+        const progreso = (segundos / duracion) * 100;
+        const nuevoDashoffset = (100 - progreso) / 100 * dashoffset;
+        progressCircle.style.strokeDashoffset = nuevoDashoffset;
+
+        if (segundos === 0) {
+            clearInterval(temporizadorInterval);
+            alert("¡Tiempo agotado!");
+        } else {
+            segundos--;
+        }
+    }
+
+    const temporizadorInterval = setInterval(actualizarTemporizador, 1000);
+});
+
+</script>
+</html>

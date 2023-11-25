@@ -101,10 +101,7 @@
       </div>
     </section>
 
-    <section
-      class="tertiary_section"
-      id="tertiary_section"
-    >
+    <section class="tertiary_section" id="tertiary_section">
       <div class="content text-center">
         <img alt="thumbs up" src="../public/img/thumbs_up.svg" class="main" />
         <h2 class="text-center p">¡ya está todo!</h2>
@@ -125,14 +122,32 @@
       </div>
     </section>
 
-    <section class="test_section" id="test_section">
+    <section class="test_section" id="test_section" style="display: none">
       <article id="loadAudio">
         <div class="contenedor">
           <div class="onda"></div>
           <img src="../public/img/sound.gif" alt="Gif con efecto de onda" />
         </div>
       </article>
-      <article id="test" style="display: none"></article>
+      <article id="test" style="display: none">
+        <div class="progress-container">
+          <svg class="progress-ring" width="60" height="60">
+            <circle
+              class="progress-ring-circle"
+              cx="30"
+              cy="30"
+              r="24"
+              fill="transparent"
+              stroke="#3498db"
+              stroke-width="6"
+            ></circle>
+          </svg>
+          <div id="temporizador" class="contador">10</div>
+        </div>
+        <div class="test_option" id="test_option">
+
+        </div>
+      </article>
       <article id="nextTest" style="display: none">
         <div>
           <h2>Resumen</h2>

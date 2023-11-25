@@ -181,6 +181,10 @@ span {
   border-radius: 50%;
 }
 
+.test_section #test .test_option{
+
+}
+
 .test_section #nextTest div {
   width: 250px;
   height: 250px;
@@ -288,6 +292,22 @@ span {
 }
 
 .key {
+  min-width: 45px;
+  height: 45px;
+  margin: 0 5px;
+  padding: 0 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.key2 {
   width: 45px;
   height: 45px;
   border: 1px solid #ccc;
@@ -331,32 +351,69 @@ span {
   border-bottom: 2px solid #000;
   width: 45px;
   margin: 0 5px;
+  text-align: center;
 }
 
 .x3 {
-  width: 150px;
   height: 150px;
   display: grid;
   grid-template-columns: auto auto auto;
 }
 
 .x4 {
-  width: 250px;
   height: 250px;
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
 
 .x5 {
-  width: 300px;
   height: 300px;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
 }
 
 .x6 {
-  width: 400px;
   height: 400px;
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
+}
+
+
+
+
+
+
+
+
+.progress-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.contador {
+  font-size: 1.5em;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 1s linear;
+  transform-origin: 50% 50%;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 0;
 }
