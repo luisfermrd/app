@@ -10,6 +10,7 @@ const nextTest = document.getElementById("nextTest");
 const playAudio = document.getElementById("playAudio");
 const CotinueTest = document.getElementById("CotinueTest");
 let pressedKeysElement = document.getElementById("pressedKeys");
+let keyboard = document.getElementById("keyboard");
 
 let numTest = 0;
 let attempts = 0;
@@ -77,6 +78,13 @@ const type3 = `
         <button class="key2 f1 disables" data-key="">AltGr</button>
         <button class="key2 f1 disables" data-key="">Fn</button>
     </div>
+</div>`;
+const type4 = `
+<div id="pressedKeys">
+
+</div>
+<div id="keyboard" class="groupKeys">
+    
 </div>`;
 
 const dataForTest = [
@@ -202,6 +210,78 @@ const dataForTest = [
     src: "../public/song/clicktarget_group.mp3",
     type: 2,
   },
+  {
+    arreglo: [
+      ["l", "i"],
+      ["o", "u"],
+      ["r", "n"],
+      ["h", "n"],
+      ["a", "e"],
+      ["f", "t"],
+      ["c", "s"],
+      ["s", "z"],
+      ["v", "w"],
+      ["y", "g"],
+    ],
+    numVeces: 16,
+    class: "x4",
+    src: "../public/song/clicktarget_group.mp3",
+    type: 2,
+  },
+  {
+    arreglo: [
+      ["d", "b"],
+      ["q", "p"],
+      ["n", "m"],
+      ["v", "u"],
+      ["ñ", "n"],
+      ["e", "a"],
+      ["g", "c"],
+      ["z", "s"],
+      ["w", "v"],
+      ["t", "d"],
+    ],
+    numVeces: 16,
+    class: "x4",
+    src: "../public/song/clicktarget_group.mp3",
+    type: 1,
+  },
+  {
+    arreglo: [
+      ["x", "y"],
+      ["m", "n"],
+      ["s", "z"],
+      ["d", "t"],
+      ["c", "g"],
+      ["f", "t"],
+      ["r", "n"],
+      ["l", "i"],
+      ["a", "e"],
+      ["k", "h"],
+    ],
+    numVeces: 16,
+    class: "x4",
+    src: "../public/song/clicktarget_group.mp3",
+    type: 1,
+  },
+  {
+    arreglo: [
+      ["k", "h"],
+      ["y", "g"],
+      ["s", "z"],
+      ["t", "d"],
+      ["e", "a"],
+      ["c", "g"],
+      ["r", "n"],
+      ["l", "i"],
+      ["a", "e"],
+      ["x", "y"],
+    ],
+    numVeces: 16,
+    class: "x4",
+    src: "../public/song/clicktarget_group.mp3",
+    type: 2,
+  },
    {
     principal: "pamata",
     secundaria: ["bamada"],
@@ -233,7 +313,7 @@ const dataForTest = [
     class: "x4",
     src: "../public/song/clicktarget_dabapaba.mp3",
     type: 1,
-  },*/
+  },
   {
     palabra: "BEBIDA",
     src: "../public/song/hearwrite_bebida.mp3",
@@ -273,6 +353,88 @@ const dataForTest = [
     palabra: "LALADALA",
     src: "../public/song/hearwrite_laladala.mp3",
     type: 3,
+  },
+  {
+    arreglo: [
+      ["ELEF NTE", ["C", "X", "R", "E", "A", "M"], 4],
+      ["COCODR LO", ["D", "I", "C", "R", "A", "T"], 1],
+      ["HIPÓDROM ", ["L", "U", "G", "O", "A", "R"], 3],
+      ["MAGNOL A", ["I", "O", "M", "E", "R", "U"], 0],
+      ["EXC LENCIA", ["B", "P", "G", "O", "T", "E"], 5],
+      ["COMPUT DORA", ["Z", "V", "M", "U", "T", "A"], 5],
+      ["INSTR MENTO", ["O", "P", "U", "I", "A", "L"], 2],
+      ["TEL VISIÓN", ["M", "E", "N", "L", "C", "T"], 1],
+      ["DELIBER CIÓN", ["H", "I", "T", "R", "A", "N"], 4],
+      ["EXTRAORD NARIO", ["L", "E", "I", "R", "D", "I"], 2],
+    ],
+    src: "../public/song/inserttarget.mp3",
+    type: 4,
+  },
+  {
+    arreglo: [
+      ["EUCAL PTO", ["M", "P", "I", "L", "E", "T"], 2],
+      ["PARTIC LARIDAD", ["C", "I", "L", "U", "T", "D"], 3],
+      ["FOT GRAFÍA", ["H", "R", "T", "I", "F", "O"], 5],
+      ["INDEP NDIENTE", ["C", "I", "T", "N", "D", "E"], 5],
+      ["LAB RATORIO", ["M", "O", "T", "R", "A", "I"], 1],
+      ["MALABAR STA", ["N", "O", "R", "A", "L", "I"], 5],
+      ["TRANSPOR ADOR", ["C", "D", "A", "T", "R", "N"], 3],
+      ["EXPERIM NTACIÓN", ["R", "M", "E", "N", "T", "O"], 2],
+      ["AV NTURERO", ["P", "O", "R", "V", "E", "T"], 4],
+      ["IMPRESCIND BLE", ["N", "S", "P", "C", "R", "I"], 5],
+    ],
+    src: "../public/song/inserttarget.mp3",
+    type: 4,
+  },*/
+  {
+    arreglo: [
+      ["TARDBE", 4],
+      ["FLOER", 3],
+      ["EJEMPILO", 5],
+      ["JUESGO", 3],
+      ["GRPANDE", 2],
+      ["PATATRA", 5],
+      ["ÁLBUNM", 4],
+      ["RÁPDIDO", 2],
+      ["CARTPON", 4],
+      ["ESXCRITO", 2],
+    ],
+    src: "../public/song/pickletter.mp3",
+    type: 5,
+  },
+  /*  {
+    arreglo: [// Hay que arreglar este
+      
+        ["FELICIDAD", 8],
+        ["CIENCIA", 3],
+        ["AMIGO", 4],
+        ["SÍNTOMA", 5],
+        ["COMPUTADORA", 7],
+        ["COMPROMISO", 6],
+        ["DECEPCIÓN", 4],
+        ["EMPRESA", 6],
+        ["IMPORTANTE", 4],
+        ["CIENCIA", 2]
+      
+    ],
+    src: "../public/song/pickletter.mp3",
+    type: 5,
+  }, */
+  {
+    arreglo: [
+      ["CASA", "ACAS"],
+      ["PERRO", "ROPER"],
+      ["GATO", "OGAT"],
+      ["SOL", "LOS"],
+      ["CIELO", "OCEIL"],
+      ["ARBOL", "OBALR"],
+      ["AGUA", "AUGA"],
+      ["LIBRO", "OBRIL"],
+      ["MESA", "EAMS"],
+      ["SILLA", "LILAS"],
+    ],
+    src: "../public/song/orderchunks_letters.mp3",
+    type: 6,
   },
 ];
 
@@ -355,6 +517,10 @@ CotinueTest.addEventListener("click", () => {
           numTest++;
           test.style.display = "none";
           nextTest.style.display = "flex";
+          console.log("Test N° ", numTest);
+          if (numTest == dataForTest.length) {
+            console.log("se acabo el test XD");
+          }
           console.log("Se acabo el tiempo, next", answers);
         }, 12000);
       });
@@ -439,6 +605,25 @@ function crearBotones(obj) {
       generarLineas(obj.palabra);
       listenSelected3(obj);
       break;
+    case 4:
+      if (con == obj.arreglo.length) {
+        con = 0;
+      }
+      limpiarContenedor(testOption);
+      testOption.innerHTML = type4;
+      pressedKeysElement = document.getElementById("pressedKeys");
+      keyboard = document.getElementById("keyboard");
+      generarLineas2(obj.arreglo[con][0], obj.arreglo[con][1]);
+      listenSelected4(obj);
+      break;
+    case 5:
+      if (con == obj.arreglo.length) {
+        con = 0;
+      }
+      limpiarContenedor(testOption);
+      generarKeys(obj.arreglo[con][0]);
+      listenSelected5(obj);
+      break;
 
     default:
       console.log("Error en el tipo de test");
@@ -514,6 +699,47 @@ function listenSelected3(obj) {
   });
 }
 
+function listenSelected4(obj) {
+  const keys = document.querySelectorAll(".key");
+
+  keys.forEach((key) => {
+    key.addEventListener("click", () => {
+      const keyValue = key.dataset.key;
+      if (keyValue != "") {
+        attempts++;
+        if (keyValue === obj.arreglo[con][1][obj.arreglo[con][2]]) {
+          successfulAttempts++;
+        } else {
+          failedAttempts++;
+        }
+        console.log(attempts, successfulAttempts, failedAttempts);
+        con++;
+        crearBotones(obj);
+      }
+    });
+  });
+}
+function listenSelected5(obj) {
+  const keys = document.querySelectorAll(".key");
+
+  keys.forEach((key) => {
+    key.addEventListener("click", () => {
+      const keyValue = key.dataset.key;
+      if (keyValue != "") {
+        attempts++;
+        if (keyValue === obj.arreglo[con][0][obj.arreglo[con][1]]) {
+          successfulAttempts++;
+        } else {
+          failedAttempts++;
+        }
+        console.log(attempts, successfulAttempts, failedAttempts);
+        con++;
+        crearBotones(obj);
+      }
+    });
+  });
+}
+
 function limpiarContenedor(contenedor) {
   while (contenedor.firstChild) {
     contenedor.removeChild(contenedor.firstChild);
@@ -569,4 +795,39 @@ function generarLineas(palabra) {
     lines.push(line);
     pressedKeysElement.appendChild(line);
   }
+}
+function generarLineas2(palabra, array) {
+  lines = [];
+  currentLineIndex = 0;
+  const wordLines = palabra.length;
+  for (let i = 0; i < wordLines; i++) {
+    const line = document.createElement("div");
+    line.classList.add("line");
+    line.textContent = palabra[i];
+    lines.push(line);
+    pressedKeysElement.appendChild(line);
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    const Button = document.createElement("button");
+    Button.classList.add("key");
+    Button.dataset.key = array[i];
+    Button.textContent = array[i];
+
+    keyboard.appendChild(Button);
+  }
+}
+function generarKeys(palabra) {
+  const div = document.createElement("div");
+  div.classList.add("groupKeys");
+
+  for (let i = 0; i < palabra.length; i++) {
+    const Button = document.createElement("button");
+    Button.classList.add("key");
+    Button.dataset.key = palabra[i];
+    Button.textContent = palabra[i];
+
+    div.appendChild(Button);
+  }
+  testOption.appendChild(div);
 }
