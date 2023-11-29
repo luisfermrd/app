@@ -55,11 +55,11 @@ const dataTable = new DataTable('#tableStudents', {
             title: 'Opciones',
             data: 'StudentID',
             render: function (data, type, row, meta) {
-                return `<a class="button" href="#">
+                return `<a class="button" href="./test.php?id=${data}">
                             <span>Realizar prueba de cribado</span>
                             <i class="fa-solid fa-list"></i>
                         </a>
-                        <a class="button" href="#">
+                        <a class="button" href="./testResult.php?id=${data}">
                             <span>Resultados prueba de cribado</span>
                             <i class="fa-solid fa-gauge-high"></i>
                         </a>
@@ -177,11 +177,11 @@ function loadCards() {
                                 <h2>${student.UserName}</h2>
                                 <p>${student.Age} años</p>
                                 <div class="card-option">
-                                    <a class="button" href="#">
+                                    <a class="button" href="./test.php?id=${student.StudentID}">
                                         <span>Realizar prueba de cribado</span>
                                         <i class="fa-solid fa-list"></i>
                                     </a>
-                                    <a class="button" href="#">
+                                    <a class="button" href="./testResult.php?id=${student.StudentID}">
                                         <i class="fa-solid fa-gauge-high"></i>
                                         <span>Resultados prueba de cribado</span>
                                     </a>

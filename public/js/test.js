@@ -88,7 +88,7 @@ const type4 = `
 </div>`;
 
 const dataForTest = [
-  /* {
+  {
     principal: "e",
     secundaria: ["a"],
     numVeces: 9,
@@ -191,7 +191,7 @@ const dataForTest = [
     class: "x4",
     src: "../public/song/clicktarget_labrado.mp3",
     type: 1,
-  }, 
+  },
   {
     arreglo: [
       ["b", "d"],
@@ -244,7 +244,7 @@ const dataForTest = [
     numVeces: 16,
     class: "x4",
     src: "../public/song/clicktarget_group.mp3",
-    type: 1,
+    type: 2,
   },
   {
     arreglo: [
@@ -262,7 +262,7 @@ const dataForTest = [
     numVeces: 16,
     class: "x4",
     src: "../public/song/clicktarget_group.mp3",
-    type: 1,
+    type: 2,
   },
   {
     arreglo: [
@@ -282,7 +282,7 @@ const dataForTest = [
     src: "../public/song/clicktarget_group.mp3",
     type: 2,
   },
-   {
+  {
     principal: "pamata",
     secundaria: ["bamada"],
     numVeces: 16,
@@ -358,11 +358,11 @@ const dataForTest = [
     arreglo: [
       ["ELEF NTE", ["C", "X", "R", "E", "A", "M"], 4],
       ["COCODR LO", ["D", "I", "C", "R", "A", "T"], 1],
-      ["HIPÓDROM ", ["L", "U", "G", "O", "A", "R"], 3],
-      ["MAGNOL A", ["I", "O", "M", "E", "R", "U"], 0],
+      ["HIPÓDR MO", ["L", "U", "G", "O", "A", "R"], 3],
       ["EXC LENCIA", ["B", "P", "G", "O", "T", "E"], 5],
       ["COMPUT DORA", ["Z", "V", "M", "U", "T", "A"], 5],
       ["INSTR MENTO", ["O", "P", "U", "I", "A", "L"], 2],
+      ["MAGNOL A", ["I", "O", "M", "E", "R", "U"], 0],
       ["TEL VISIÓN", ["M", "E", "N", "L", "C", "T"], 1],
       ["DELIBER CIÓN", ["H", "I", "T", "R", "A", "N"], 4],
       ["EXTRAORD NARIO", ["L", "E", "I", "R", "D", "I"], 2],
@@ -385,7 +385,7 @@ const dataForTest = [
     ],
     src: "../public/song/inserttarget.mp3",
     type: 4,
-  },*/
+  },
   {
     arreglo: [
       ["TARDBE", 4],
@@ -402,20 +402,18 @@ const dataForTest = [
     src: "../public/song/pickletter.mp3",
     type: 5,
   },
-  /*  {
-    arreglo: [// Hay que arreglar este
-      
-        ["FELICIDAD", 8],
-        ["CIENCIA", 3],
-        ["AMIGO", 4],
-        ["SÍNTOMA", 5],
-        ["COMPUTADORA", 7],
-        ["COMPROMISO", 6],
-        ["DECEPCIÓN", 4],
-        ["EMPRESA", 6],
-        ["IMPORTANTE", 4],
-        ["CIENCIA", 2]
-      
+  /*  {// hay que arreglar
+    arreglo: [
+      ["FELICIDAD", 8],
+      ["CIENCIA", 3],
+      ["AMIGO", 4],
+      ["SÍNTOMA", 5],
+      ["COMPUTADORA", 7],
+      ["COMPROMISO", 6],
+      ["DECEPCIÓN", 4],
+      ["EMPRESA", 6],
+      ["IMPORTANTE", 4],
+      ["CIENCIA", 2],
     ],
     src: "../public/song/pickletter.mp3",
     type: 5,
@@ -427,13 +425,45 @@ const dataForTest = [
       ["GATO", "OGAT"],
       ["SOL", "LOS"],
       ["CIELO", "OCEIL"],
-      ["ARBOL", "OBALR"],
+      ["ARBOL", "OLBAR"],
       ["AGUA", "AUGA"],
-      ["LIBRO", "OBRIL"],
-      ["MESA", "EAMS"],
-      ["SILLA", "LILAS"],
+      ["LIBRO", "ORBIL"],
+      ["MESA", "AMES"],
+      ["SILLA", "ILLAS"],
     ],
     src: "../public/song/orderchunks_letters.mp3",
+    type: 6,
+  },
+  {
+    arreglo: [
+      ["SILLA", "ILLAS"],
+      ["MESA", "AMES"],
+      ["LIBRO", "ORBIL"],
+      ["ARBOL", "OLBAR"],
+      ["CIELO", "OCEIL"],
+      ["SOL", "LOS"],
+      ["GATO", "OGAT"],
+      ["AGUA", "AUGA"],
+      ["PERRO", "ROPER"],
+      ["CASA", "ACAS"],
+    ],
+    src: "../public/song/orderchunks_letters.mp3",
+    type: 6,
+  },
+  {
+    arreglo: [
+      ["CAMINAR", ["MI", "CA", "NAR"]],
+      ["ESTOFADO", ["DO", "FA", "ES", "TO"]],
+      ["LIBRO", ["BRO", "LI"]],
+      ["SISTEMA", ["TE", "MA", "SIS"]],
+      ["CAFE", ["FE", "CA"]],
+      ["ARAÑA", ["RA", "ÑA", "A"]],
+      ["GATO", ["TO", "GA"]],
+      ["COMPUTADORA", ["TA", "DO", "RA", "COM", "PU"]],
+      ["EMPRESA", ["SA", "PRE", "EM"]],
+      ["CIENCIA", ["CIA", "CI", "EN"]],
+    ],
+    src: "../public/song/orderchunks_syllable.mp3",
     type: 6,
   },
 ];
@@ -463,7 +493,6 @@ go.addEventListener("click", () => {
   test_section.style.display = "flex";
   setTimeout(() => {
     reproducirAudio(dataForTest[numTest].src, () => {
-      console.log("Se reprodujo el audio");
       loadAudio.style.display = "none";
       crearBotones(dataForTest[numTest]);
       test.style.display = "flex";
@@ -481,7 +510,6 @@ go.addEventListener("click", () => {
         numTest++;
         test.style.display = "none";
         nextTest.style.display = "flex";
-        console.log("Se acabo el tiempo, next", answers);
       }, 12000);
     });
   }, 500);
@@ -491,12 +519,31 @@ CotinueTest.addEventListener("click", () => {
   nextTest.style.display = "none";
   if (numTest >= dataForTest.length) {
     console.log("se acabo el test");
+    limpiarContenedor(testOption);
+    test_section.style.display = "flex";
+    test.style.display = "flex";
+    test.textContent = "Cargando ...";
+    setTimeout(() => {
+      const totalIntentos = answers.reduce(
+        (total, item) => total + item.attempts,
+        0
+      );
+      const totalExitosos = answers.reduce(
+        (total, item) => total + item.successfulAttempts,
+        0
+      );
+
+      const efectividadGeneral = (totalExitosos / totalIntentos) * 100 || 0;
+
+      console.log("Efectividad General:", efectividadGeneral.toFixed(2) + "%");
+
+      guardarDatos(efectividadGeneral.toFixed(2), answers);
+    }, 1000);
   } else {
     test_section.style.display = "flex";
     loadAudio.style.display = "flex";
     setTimeout(() => {
       reproducirAudio(dataForTest[numTest].src, () => {
-        console.log("Se reprodujo el audio");
         loadAudio.style.display = "none";
         crearBotones(dataForTest[numTest]);
         test.style.display = "flex";
@@ -521,7 +568,6 @@ CotinueTest.addEventListener("click", () => {
           if (numTest == dataForTest.length) {
             console.log("se acabo el test XD");
           }
-          console.log("Se acabo el tiempo, next", answers);
         }, 12000);
       });
     }, 500);
@@ -548,8 +594,6 @@ function crearBotones(obj) {
     numeroAleatorio1 = n1;
     numeroAleatorio2 = n2;
     numeroAleatorio3 = n3;
-  } else {
-    console.log(" NO tiene numVeces");
   }
   switch (obj.type) {
     case 1:
@@ -623,6 +667,15 @@ function crearBotones(obj) {
       limpiarContenedor(testOption);
       generarKeys(obj.arreglo[con][0]);
       listenSelected5(obj);
+      break;
+    case 6:
+      if (con == obj.arreglo.length) {
+        con = 0;
+      }
+      limpiarContenedor(testOption);
+      generarKeys2(obj.arreglo[con][1]);
+      pressedKeysElement = document.getElementById("pressedKeys");
+      listenSelected6(obj);
       break;
 
     default:
@@ -719,6 +772,7 @@ function listenSelected4(obj) {
     });
   });
 }
+
 function listenSelected5(obj) {
   const keys = document.querySelectorAll(".key");
 
@@ -735,6 +789,34 @@ function listenSelected5(obj) {
         console.log(attempts, successfulAttempts, failedAttempts);
         con++;
         crearBotones(obj);
+      }
+    });
+  });
+}
+
+function listenSelected6(obj) {
+  const keys = document.querySelectorAll(".key");
+
+  keys.forEach((key) => {
+    key.addEventListener("click", () => {
+      const keyValue = key.dataset.key;
+      if (keyValue != "") {
+        pressedKeysElement.textContent =
+          pressedKeysElement.textContent + keyValue;
+        if (
+          pressedKeysElement.textContent.length == obj.arreglo[con][0].length
+        ) {
+          attempts++;
+          const typedWord = pressedKeysElement.textContent;
+          if (typedWord.toUpperCase() === obj.arreglo[con][0]) {
+            successfulAttempts++;
+          } else {
+            failedAttempts++;
+          }
+          console.log(attempts, successfulAttempts, failedAttempts);
+          con++;
+          crearBotones(obj);
+        }
       }
     });
   });
@@ -796,6 +878,7 @@ function generarLineas(palabra) {
     pressedKeysElement.appendChild(line);
   }
 }
+
 function generarLineas2(palabra, array) {
   lines = [];
   currentLineIndex = 0;
@@ -817,6 +900,7 @@ function generarLineas2(palabra, array) {
     keyboard.appendChild(Button);
   }
 }
+
 function generarKeys(palabra) {
   const div = document.createElement("div");
   div.classList.add("groupKeys");
@@ -830,4 +914,64 @@ function generarKeys(palabra) {
     div.appendChild(Button);
   }
   testOption.appendChild(div);
+}
+
+function generarKeys2(palabra) {
+  const div = document.createElement("div");
+  div.classList.add("groupKeys");
+  div.setAttribute("id", "pressedKeys");
+  const div2 = document.createElement("div");
+  div2.classList.add("groupKeys");
+
+  for (let i = 0; i < palabra.length; i++) {
+    const Button = document.createElement("button");
+    Button.classList.add("key");
+    Button.dataset.key = palabra[i];
+    Button.textContent = palabra[i];
+
+    div2.appendChild(Button);
+  }
+  testOption.appendChild(div);
+  testOption.appendChild(div2);
+}
+
+async function guardarDatos(efectividadGeneral, answers) {
+  let data = new FormData();
+  data.append("controller", "test");
+  data.append("action", "createTest");
+  data.append("punctuation", efectividadGeneral);
+  data.append("scorePerQuestion", JSON.stringify(answers));
+  if (efectividadGeneral > 50) {
+    data.append("description", "SIN RIESGO");
+  } else {
+    data.append("description", "CON RIESGO");
+  }
+  data.append("studentID", $("#studentID").val());
+  await $.ajax({
+    type: "post",
+    url: "../indexRequest.php",
+    data: data,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+      if (response.status == "success") {
+        Toastify({
+          text: response.message,
+          duration: 4000,
+          style: {
+            background: "linear-gradient(to right, #22c55e, #15803d)",
+          },
+        }).showToast();
+        $(location).attr("href", `testResult.php?id=${$("#studentID").val()}`);
+      } else {
+        Toastify({
+          text: response.message,
+          duration: 4000,
+          style: {
+            background: "linear-gradient(to right, #ef4444, #b91c1c)",
+          },
+        }).showToast();
+      }
+    },
+  });
 }

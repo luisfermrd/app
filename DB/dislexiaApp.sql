@@ -43,6 +43,14 @@ CREATE TABLE User_Students (
     FOREIGN KEY (GroupID) REFERENCES User_Groups(GroupID) ON DELETE CASCADE
 );
 
+CREATE TABLE Students_Tests (
+    TestID INT AUTO_INCREMENT PRIMARY KEY,
+    Punctuation VARCHAR(10) NOT NULL,
+    ScorePerQuestion TEXT NOT NULL,
+    Description TEXT NOT NULL,
+    StudentID INT NOT NULL,
+    FOREIGN KEY (StudentID) REFERENCES User_Students(StudentID) ON DELETE CASCADE
+);
 
 
 

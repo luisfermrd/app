@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+ob_start();
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+  header("Location: index.php");
+} else if (isset($_GET['id'])) {
+?>
+
+  <!DOCTYPE html>
+  <html lang="es">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../public/img/icon.png" type="image/x-icon">
     <title>Test</title>
     <link rel="stylesheet" href="../public/css/test.css" />
+    <link rel="stylesheet" href="../lib/toastify-js/toastify.css" />
   </head>
 
   <body>
-    <section class="initial_section" id="initial_section" style="display: none">
+  <input type="hidden" name="studentID" id="studentID" value="<?php echo $_GET['id'] ?>">
+    <section class="initial_section" id="initial_section">
       <div class="content">
         <header class="in-header">
           <button id="backToHome">&lt;</button>
@@ -17,9 +30,7 @@
         <p class="text-center p">
           Estos consejos te ayudarán a hacer el test lo mejor posible
         </p>
-        <span class="text-center p"
-          >Un adulto tiene que supervisar este test</span
-        >
+        <span class="text-center p">Un adulto tiene que supervisar este test</span>
         <main class="column">
           <div class="text-center md hydrated">
             <div class="img">
@@ -55,10 +66,8 @@
             </div>
             <h3>lo importante es intentarlo</h3>
             <p>
-              no importa si no entiendes completamente una prueba:<br /><strong
-                >asegúrate de intentarlo al menos una vez, no tienes nada que
-                perder :)</strong
-              >
+              no importa si no entiendes completamente una prueba:<br /><strong>asegúrate de intentarlo al menos una vez, no tienes nada que
+                perder :)</strong>
             </p>
           </div>
         </main>
@@ -66,17 +75,9 @@
       </div>
     </section>
 
-    <section
-      class="secondary_section"
-      id="secondary_section"
-      style="display: none"
-    >
+    <section class="secondary_section" id="secondary_section" style="display: none">
       <div class="content text-center">
-        <img
-          alt="headphones"
-          src="../public/img/auriculares.svg"
-          class="main"
-        />
+        <img alt="headphones" src="../public/img/auriculares.svg" class="main" />
         <h2 class="text-center">
           prueba de sonido<br />ponte los auriculares :)
         </h2>
@@ -84,24 +85,16 @@
           dale al play y asegúrate de que puedes oír la voz que te guiará por el
           test, alto y claro
         </span>
-        <button
-          fill="clear"
-          class="play md button button-clear activatable focusable hydrated"
-          id="playAudio"
-        >
+        <button fill="clear" class="play md button button-clear activatable focusable hydrated" id="playAudio">
           <img alt="Play" src="../public/img/play-test.svg" />
         </button>
-        <button
-          class="btn-lg divor divor-secondary md button button-block button-round button-solid activatable focusable hydrated"
-          disabled
-          id="nextSection2"
-        >
+        <button class="btn-lg divor divor-secondary md button button-block button-round button-solid activatable focusable hydrated" disabled id="nextSection2">
           oigo todo genial
         </button>
       </div>
     </section>
 
-    <section class="tertiary_section" id="tertiary_section">
+    <section class="tertiary_section" id="tertiary_section" style="display: none">
       <div class="content text-center">
         <img alt="thumbs up" src="../public/img/thumbs_up.svg" class="main" />
         <h2 class="text-center p">¡ya está todo!</h2>
@@ -113,10 +106,7 @@
           A partir de ahora tienes que contestar las preguntas, ¡sabemos que lo
           harás genial!
         </h2>
-        <button
-          id="go"
-          class="btn-lg divor divor-secondary md button button-block button-round button-solid activatable focusable hydrated"
-        >
+        <button id="go" class="btn-lg divor divor-secondary md button button-block button-round button-solid activatable focusable hydrated">
           Vamos allá
         </button>
       </div>
@@ -132,15 +122,7 @@
       <article id="test" style="display: none">
         <div class="progress-container">
           <svg class="progress-ring" width="60" height="60">
-            <circle
-              class="progress-ring-circle"
-              cx="30"
-              cy="30"
-              r="24"
-              fill="transparent"
-              stroke="#3498db"
-              stroke-width="6"
-            ></circle>
+            <circle class="progress-ring-circle" cx="30" cy="30" r="24" fill="transparent" stroke="#3498db" stroke-width="6"></circle>
           </svg>
           <div id="temporizador" class="contador">10</div>
         </div>
@@ -157,5 +139,14 @@
       </article>
     </section>
   </body>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="../lib/toastify-js/toastify.js"></script>
   <script src="../public/js/test.js"></script>
-</html>
+
+  </html>
+<?php
+} else {
+  header("Location: home.php");
+}
+ob_end_flush();
+?>

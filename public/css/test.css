@@ -30,7 +30,40 @@
   box-shadow: 0 0 5px black;
   margin: 20px;
 }
+.content2 {
+  width: 60%;
+  height: auto;
+  padding: 20px;
+  background-color: var(--whithe);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px black;
+  margin: 20px;
+  position: relative;
+}
 
+.in-header {
+  width: 100%;
+}
+
+.in-header button {
+  border: 1px solid var(--color-500);
+  background-color: var(--whithe);
+  color: var(--color-500);
+  font-size: 22px;
+  font-weight: 900;
+  border-radius: 50%;
+  width: 40px;
+  transition: all 0.8s ease;
+}
+
+.in-header button:hover {
+  background-color: var(--color-600);
+  color: var(--white);
+}
 .content .in-header {
   width: 100%;
 }
@@ -240,6 +273,9 @@ span {
   align-items: center;
   border: 1px solid var(--color-500);
   min-width: 300px;
+  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .keyboard {
@@ -421,4 +457,29 @@ span {
   transform-origin: 50% 50%;
   stroke-dasharray: 150;
   stroke-dashoffset: 0;
+}
+
+
+
+
+
+.chart {
+  width: 90%;
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart .img1{
+  width: 100%;
+  height: 60px;
+}
+
+.chart .img2{
+  position: absolute;
+  top: -50px;
+  left: 47%; /* 3% */
+  height: auto;
 }
