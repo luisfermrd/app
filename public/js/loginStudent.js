@@ -1,65 +1,64 @@
-// Función para mostrar un mensaje de error
-function showError(input, error) {
-    const formControl = input.parentElement;
-    formControl.className = 'form-control2 error';
-    const small = formControl.querySelector('small');
-    small.innerText = error;
-}
-
-// Función para mostrar un mensaje de éxito
-function showSuccess(input) {
-    const formControl = input.parentElement;
-    formControl.className = 'form-control2 success';
-    const small = formControl.querySelector('small');
-    small.innerText = '';
-}
-
-// Función para verificar la validez del correo electrónico
-function checkEmailValidity(email) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-}
-
-// Función para verificar la longitud de un campo de entrada
-function checkInputLength(input, min, max, errorMessage) {
-    const value = input.value.trim();
-    if (value.length < min || value.length > max) {
-        showError(input, errorMessage);
-    } else {
-        showSuccess(input);
-    }
-}
 
 // Función para cambiar la visibilidad de la contraseña
 function togglePasswordVisibility(passwordInput, toggleButton) {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleButton.classList.remove('fa-eye');
-        toggleButton.classList.add('fa-eye-slash');
-    } else {
-        passwordInput.type = "password";
-        toggleButton.classList.remove('fa-eye-slash');
-        toggleButton.classList.add('fa-eye');
-    }
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleButton.classList.remove("fa-eye");
+    toggleButton.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    toggleButton.classList.remove("fa-eye-slash");
+    toggleButton.classList.add("fa-eye");
+  }
 }
-
-// Obtener elementos del DOM
-const email2 = document.querySelector('.email-2');
-const lgPassword = document.querySelector('.password-2');
 const passwordInput = document.querySelector(".password-2");
 const toggleButton = document.getElementById("seePassword");
-const lgForm = document.querySelector('.form-lg');
-
-
-lgPassword.addEventListener("input", () => {
-    checkInputLength(lgPassword, 8, 20, "*Debe tener entre 8 y 20 caracteres.");
-});
+const lgForm = document.querySelector(".form-lg");
 
 toggleButton.addEventListener("click", () => {
-    togglePasswordVisibility(passwordInput, toggleButton);
+  togglePasswordVisibility(passwordInput, toggleButton);
 });
 
-// Evitar envío de formulario en blanco
-lgForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+
+async function login() {
+  let form_data = $("#form-login")[0];
+  let data = new FormData(form_data);
+  data.append("controller", "student");
+  data.append("action", "login");
+  await $.ajax({
+    type: "post",
+    url: "../indexRequest.php",
+    data: data,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+      if (response.status == "success") {
+        Toastify({
+          text: response.message,
+          duration: 4000,
+          style: {
+            background: "linear-gradient(to right, #22c55e, #15803d)",
+          },
+        }).showToast();
+        document.querySelector("#spinner1").style.display = "none";
+        form_data.reset();
+        $(location).attr("href", "student.php");
+      } else {
+        Toastify({
+          text: response.message,
+          duration: 4000,
+          style: {
+            background: "linear-gradient(to right, #ef4444, #b91c1c)",
+          },
+        }).showToast();
+        document.querySelector("#spinner1").style.display = "none";
+      }
+    },
+  });
+}
+
+lgForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  document.querySelector("#spinner1").style.display = "block";
+  login();
 });

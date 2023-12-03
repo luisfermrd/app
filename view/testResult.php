@@ -20,30 +20,63 @@ if (isset($_GET['id'])) {
     <body>
         <input type="hidden" name="studentID" id="studentID" value="<?php echo $_GET['id'] ?>">
         <section class="initial_section" id="initial_section">
-            <div class="content2">
+            <div class="content2" id="respondioTest" style="display: none;">
                 <header class="in-header">
-                    <button id="backToHome">&lt;</button>
+                    <?php
+                    if (isset($_SESSION["studentID"])) {
+                        echo '<button id="backToHome2">&lt;</button>';
+                    } else {
+                        echo '<button id="backToHome">&lt;</button>';
+                    }
+                    ?>
+
                 </header>
                 <h2 class="text-center p" id="name"></h2>
                 <p class="text-center p">
-                Resultado de la prueba de cribado Dytective de dificultades de lecto-escritura.
+                    Resultado de la prueba de cribado DislexiaApp de dificultades de lecto-escritura.
                 </p>
                 <div class="chart">
                     <img src="../public/img/test-chart.png" alt="char" class="img1">
-                    <img src="../public/img/chart-pointer.png" alt="pointer" class="img2">
+                    <img src="../public/img/chart-pointer.png" alt="pointer" class="img2" id="img2">
                 </div>
-                <main class="column">
-                    <div class="text-center md hydrated end">
-                        <div class="img">
-                            <img alt="try" src="../public/img/intentalo.svg" />
-                        </div>
-                        <h3>lo importante es intentarlo</h3>
-                        <p>
-                            no importa si no entiendes completamente una prueba:<br /><strong>asegúrate de intentarlo al menos una vez, no tienes nada que
-                                perder :)</strong>
+                <div class="footerChart">
+                    <span>Con Riesgo</span>
+                    <span>Sin Riesgo</span>
+
+                </div>
+                <main class="text">
+                    <br>
+                    <div class="md hydrated" id="resultadoTest">
+
+                    </div>
+                    <div>
+                        <br>
+                        <br>
+                        <h3>Recuerda que...</h3>
+                        <br>
+                        <p>Esto no es un diagnóstico de dislexia, es solo una prueba de cribado que determina el riesgo de tener dificultades de
+                            lecto-escritura. El resultado de esta prueba puede ser uno de estos dos: <strong>Sin Riesgo</strong> o <strong>Con Riesgo</strong>.
                         </p>
+                        <br>
+                        <p>Si has obtenido como resultado Con Riesgo sería buena idea derivar a un profesional, ya sea dentro del centro educativo
+                            o a un profesional externo en un centro de salud o especializado.</p>
                     </div>
                 </main>
+            </div>
+            <div class="content2" id="noRespondioTest" style="display: none;">
+                <header class="in-header">
+                    <?php
+                    if (isset($_SESSION["studentID"])) {
+                        echo '<button id="backToHome2">&lt;</button>';
+                    } else {
+                        echo '<button id="backToHome">&lt;</button>';
+                    }
+                    ?>
+                </header>
+                <h2 class="text-center p">Hola!</h2>
+                <p class="text-center p">
+                    Al parecer este usuario aun no ha realizado el test, debe realizarlo antes de verificar sus resultados.
+                </p>
             </div>
         </section>
     </body>

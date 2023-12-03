@@ -12,11 +12,14 @@ async function validate() {
     success: function (response) {
       if (response.status == "success") {
         if (response.data.length != 0) {
-            console.log('Tiene data');
-            console.log(response);
-            $("#name").text('Hola, '+response.data[0].UserName);
-        }else{
-            $(location).attr("href", "home.php");
+          console.log("Tiene data");
+          console.log(response);
+          $("#respondioTest").css("display", "flex");
+          $("#name").text("Hola, " + response.data[0].UserName);
+          $("#img2").css("left", response.data[0].Punctuation - 3 + "%");
+          $("#resultadoTest").html(response.data[0].Description);
+        } else {
+          $("#noRespondioTest").css("display", "block");
         }
       } else {
         Toastify({
@@ -32,3 +35,14 @@ async function validate() {
 }
 
 validate();
+
+document.querySelectorAll("#backToHome").forEach((element) => {
+  element.addEventListener("click", () => {
+    $(location).attr("href", "home.php");
+  });
+});
+document.querySelectorAll("#backToHome2").forEach((element) => {
+  element.addEventListener("click", () => {
+    $(location).attr("href", "student.php");
+  });
+});

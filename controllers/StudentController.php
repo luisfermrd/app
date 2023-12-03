@@ -9,7 +9,7 @@ class StudentController
     {
         $this->studentDAO = new StudentDAO($db);
         session_start();
-        $this->userID = $_SESSION['user_id'];
+        $this->userID = isset($_SESSION['user_id'])? $_SESSION['user_id']:NULL;
     }
 
     public function createStudent()
@@ -92,6 +92,34 @@ class StudentController
             return ['status' => 'success', 'message' => 'Estudiante eliminado con éxito'];
         } else {
             return ['status' => 'error', 'message' => 'Error al eliminar el estudiante'];
+        }
+    }
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = isset($_POST['user']) ? $_POST['user'] : '';
+            $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+            // Validaciones de datos
+            if (empty($user) || empty($password)) {
+                $response = ['status' => 'error', 'message' => 'Debes proporcionar un correo y una contraseña.'];
+                return $response;
+            }
+
+            // Inicio de sesión
+            $user = $this->studentDAO->login($user, $password);
+
+            if ($user) {
+                $_SESSION['studentID'] = $user['StudentID'];
+                $_SESSION['userName'] = $user['UserName'];
+
+                $response = ['status' => 'success', 'message' => 'Inicio de sesión exitoso.'];
+            } else {
+                $response = ['status' => 'error', 'message' => 'Credenciales incorrectas.'];
+            }
+
+            return $response;
         }
     }
 }

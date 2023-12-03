@@ -1,10 +1,7 @@
 <?php
 ob_start();
 session_start();
-
-if (!isset($_SESSION["user_id"])) {
-  header("Location: index.php");
-} else if (isset($_GET['id'])) {
+if (isset($_GET['id'])) {
 ?>
 
   <!DOCTYPE html>
@@ -20,11 +17,17 @@ if (!isset($_SESSION["user_id"])) {
   </head>
 
   <body>
-  <input type="hidden" name="studentID" id="studentID" value="<?php echo $_GET['id'] ?>">
+    <input type="hidden" name="studentID" id="studentID" value="<?php echo $_GET['id'] ?>">
     <section class="initial_section" id="initial_section">
       <div class="content">
         <header class="in-header">
-          <button id="backToHome">&lt;</button>
+          <?php
+          if (isset($_SESSION["studentID"])) {
+            echo '<button id="backToHome2">&lt;</button>';
+          } else {
+            echo '<button id="backToHome">&lt;</button>';
+          }
+          ?>
         </header>
         <h2 class="text-center p">Prueba de cribado de Dislexia App</h2>
         <p class="text-center p">
@@ -36,7 +39,7 @@ if (!isset($_SESSION["user_id"])) {
             <div class="img">
               <img alt="Duration" src="../public/img/duracion.svg" />
             </div>
-            <h3>duración:<br />15 min</h3>
+            <h3>duración:<br />5 min</h3>
             <p>sin pausas</p>
           </div>
           <div class="text-center md hydrated">

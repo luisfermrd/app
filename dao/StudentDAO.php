@@ -44,4 +44,12 @@ class StudentDAO
         $studentModel = new StudentModel($this->db);
         return $studentModel->deleteStudent($studentID);
     }
+
+    public function login($user, $password)
+    {
+        // Implementa la lógica de inicio de sesión y llama al modelo.
+        $studentModel = new StudentModel($this->db);
+
+        return $studentModel->validateEstudent($user, $password);
+    }
 }

@@ -91,6 +91,12 @@
   padding: 10px;
 }
 
+.text{
+  color: rgb(92, 92, 92);
+  letter-spacing: 1.5px;
+  padding: 10px;
+}
+
 .content button {
   width: 40%;
   margin: 20px;
@@ -464,6 +470,7 @@ span {
 
 
 .chart {
+  margin-top: 40px;
   width: 90%;
   height: auto;
   position: relative;
@@ -482,4 +489,65 @@ span {
   top: -50px;
   left: 47%; /* 3% */
   height: auto;
+}
+
+.footerChart{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 767px)  {
+  .p{
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .content button{
+    width: 80%;
+  }
+  .content2{
+    width: 80%;
+  }
+
+  .keyboard{
+    max-width: 350px;
+  }
+  .keyboard .fila1 .tab {
+    width: 32px;
+    font-size: 15px;
+  }
+  
+  .keyboard .fila2 .bloq-meyus {
+    width: 38px;
+    font-size: 15px;
+  }
+  
+  .keyboard .fila3 .mayus {
+    width: 32px;
+    font-size: 15px;
+  }
+  
+  .keyboard .fila4 .f1 {
+    width: 36px;
+    font-size: 15px;
+  }
+  
+  .keyboard .fila4 .espacio {
+    width: 127px;
+    font-size: 15px;
+  }
+  
+  .key2 {
+    width: 28px;
+    height: 28px;
+  }
+
+  .chart{
+    width: 100%;
+  }
 }

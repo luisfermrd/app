@@ -93,4 +93,24 @@ class StudentModel
 
         return $stmt->execute();
     }
+
+    public function validateEstudent($userName, $password)
+    {
+        // Validación de datos
+        if (empty($userName) || empty($password)) {
+            return false;
+        }
+
+        $sql = "SELECT * FROM User_Students WHERE UserName = :userName";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':userName', $userName);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['Password'])) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
 }

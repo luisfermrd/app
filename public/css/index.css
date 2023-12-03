@@ -95,6 +95,8 @@ button {
   text-transform: capitalize;
   transition: 0.3s ease-in-out;
   cursor: pointer;
+  display: flex;
+  gap: 5px;
 }
 
 button:hover {

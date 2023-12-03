@@ -1,4 +1,3 @@
-const backToHome = document.getElementById("backToHome");
 const nextSection = document.getElementById("nextSection");
 const nextSection2 = document.getElementById("nextSection2");
 const go = document.getElementById("go");
@@ -96,14 +95,14 @@ const dataForTest = [
     src: "../public/song/clicktarget_e.mp3",
     type: 1,
   },
-  {
+ /*  {
     principal: "g",
     secundaria: ["p"],
     numVeces: 9,
     class: "x3",
     src: "../public/song/clicktarget_g.mp3",
     type: 1,
-  },
+  }, */
   {
     principal: "b",
     secundaria: ["d", "p"],
@@ -128,14 +127,14 @@ const dataForTest = [
     src: "../public/song/clicktarget_ba.mp3",
     type: 1,
   },
-  {
+  /* {
     principal: "gar",
     secundaria: ["jar"],
     numVeces: 16,
     class: "x4",
     src: "../public/song/clicktarget_gar.mp3",
     type: 1,
-  },
+  }, */
   {
     principal: "pla",
     secundaria: ["bla", "fla", "cla"],
@@ -152,14 +151,14 @@ const dataForTest = [
     src: "../public/song/clicktarget_bla.mp3",
     type: 1,
   },
-  {
+/*   {
     principal: "glis",
     secundaria: ["lis", "clis", "glit"],
     numVeces: 25,
     class: "x5",
     src: "../public/song/clicktarget_glis.mp3",
     type: 1,
-  },
+  }, */
   {
     principal: "pala",
     secundaria: ["bala", "dala", "mala"],
@@ -176,7 +175,7 @@ const dataForTest = [
     src: "../public/song/clicktarget_boda.mp3",
     type: 1,
   },
-  {
+  /* {
     principal: "plata",
     secundaria: ["blata", "clata", "flata"],
     numVeces: 36,
@@ -191,7 +190,7 @@ const dataForTest = [
     class: "x4",
     src: "../public/song/clicktarget_labrado.mp3",
     type: 1,
-  },
+  }, */
   {
     arreglo: [
       ["b", "d"],
@@ -228,7 +227,7 @@ const dataForTest = [
     src: "../public/song/clicktarget_group.mp3",
     type: 2,
   },
-  {
+  /* {
     arreglo: [
       ["d", "b"],
       ["q", "p"],
@@ -281,7 +280,7 @@ const dataForTest = [
     class: "x4",
     src: "../public/song/clicktarget_group.mp3",
     type: 2,
-  },
+  }, 
   {
     principal: "pamata",
     secundaria: ["bamada"],
@@ -297,7 +296,7 @@ const dataForTest = [
     class: "x4",
     src: "../public/song/clicktarget_dapama.mp3",
     type: 1,
-  },
+  },*/
   {
     principal: "dabapa",
     secundaria: ["dapaba"],
@@ -319,7 +318,7 @@ const dataForTest = [
     src: "../public/song/hearwrite_bebida.mp3",
     type: 3,
   },
-  {
+  /* {
     palabra: "PRINCIPIO",
     src: "../public/song/hearwrite_principio.mp3",
     type: 3,
@@ -333,7 +332,7 @@ const dataForTest = [
     palabra: "PERCEPCION",
     src: "../public/song/hearwrite_percepcion.mp3",
     type: 3,
-  },
+  }, */
   {
     palabra: "TADA",
     src: "../public/song/hearwrite_tada.mp3",
@@ -452,13 +451,13 @@ const dataForTest = [
   },
   {
     arreglo: [
+      ["LIBRO", ["BRO", "LI"]],
+      ["CAFE", ["FE", "CA"]],
+      ["GATO", ["TO", "GA"]],
       ["CAMINAR", ["MI", "CA", "NAR"]],
       ["ESTOFADO", ["DO", "FA", "ES", "TO"]],
-      ["LIBRO", ["BRO", "LI"]],
       ["SISTEMA", ["TE", "MA", "SIS"]],
-      ["CAFE", ["FE", "CA"]],
       ["ARAÑA", ["RA", "ÑA", "A"]],
-      ["GATO", ["TO", "GA"]],
       ["COMPUTADORA", ["TA", "DO", "RA", "COM", "PU"]],
       ["EMPRESA", ["SA", "PRE", "EM"]],
       ["CIENCIA", ["CIA", "CI", "EN"]],
@@ -468,8 +467,15 @@ const dataForTest = [
   },
 ];
 
-backToHome.addEventListener("click", () => {
-  window.location.href = "home.php";
+document.querySelectorAll("#backToHome").forEach((element) => {
+  element.addEventListener("click", () => {
+    $(location).attr("href", "home.php");
+  });
+});
+document.querySelectorAll("#backToHome2").forEach((element) => {
+  element.addEventListener("click", () => {
+    $(location).attr("href", "student.php");
+  });
 });
 
 nextSection.addEventListener("click", () => {
@@ -941,11 +947,45 @@ async function guardarDatos(efectividadGeneral, answers) {
   data.append("action", "createTest");
   data.append("punctuation", efectividadGeneral);
   data.append("scorePerQuestion", JSON.stringify(answers));
-  if (efectividadGeneral > 50) {
-    data.append("description", "SIN RIESGO");
-  } else {
-    data.append("description", "CON RIESGO");
+
+  if (efectividadGeneral >= 90) {
+    data.append("description", `<div class="resultado">
+                                  <h3>Porcentaje de Aciertos: 90% o más</h3>
+                                  <p>Normal - No presenta dislexia</p>
+                                  <br>
+                                  <h4>Recomendación:</h4>
+                                  <p>Felicidades, los resultados sugieren un rendimiento en lectura y escritura dentro del rango normal.
+                                  Se recomienda continuar fomentando la lectura y ofrecer desafíos adicionales para promover el desarrollo de habilidades lingüísticas.</p>
+                                </div>`);
+  } else if (efectividadGeneral < 90 && efectividadGeneral >= 70){
+    data.append("description", `<div class="resultado">
+                                  <h3>Porcentaje de Aciertos: 89%-70%</h3>
+                                  <p>Regular con Dificultad - Monitoreo y Apoyo Adicional</p>
+                                  <br>
+                                  <h4>Recomendación:</h4>
+                                  <p>Aunque los resultados son en su mayoría positivos, se observa una ligera dificultad.
+                                  Se sugiere monitoreo continuo y la implementación de estrategias de apoyo adicional, como programas de lectura específicos o actividades de conciencia fonológica.</p>
+                                </div>`);
+  }else if (efectividadGeneral < 70 && efectividadGeneral >= 60){
+    data.append("description", `<div class="resultado">
+                                  <h3>Porcentaje de Aciertos: 69%-60%</h3>
+                                  <p>Dificultad Moderada - Intervención Educativa</p>
+                                  <br>
+                                  <h4>Recomendación:</h4>
+                                  <p>Se observan dificultades moderadas en lectura y escritura.
+                                  Se recomienda la intervención educativa, que podría incluir programas especializados y el apoyo de profesionales de la educación especial.</p>
+                                </div>`);
+  }else if (efectividadGeneral < 60){
+    data.append("description", `<div class="resultado">
+                                  <h3>Porcentaje de Aciertos: Menos del 59%</h3>
+                                  <p>Posible Dislexia - Evaluación y Apoyo Intensivo</p>
+                                  <br>
+                                  <h4>Recomendación:</h4>
+                                  <p>Los resultados indican dificultades significativas en lectura y escritura.
+                                  Se recomienda una evaluación más exhaustiva por parte de profesionales de la salud y educación. Intervenciones intensivas y adaptaciones curriculares pueden ser necesarias.</p>
+                                </div>`);
   }
+
   data.append("studentID", $("#studentID").val());
   await $.ajax({
     type: "post",
